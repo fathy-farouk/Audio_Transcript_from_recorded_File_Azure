@@ -41,13 +41,12 @@ winsound.PlaySound(audioFile, winsound.SND_FILENAME)
 # playsound(audioFile)
 audio_config = speech_sdk.AudioConfig(filename=audioFile)
 
-
+#----------------------------------------------------------------------------------------
 from azure.cognitiveservices.speech import SpeechRecognizer, AutoDetectSourceLanguageConfig, AudioConfig
 # ✅ Enable Auto Language Detection (Arabic + English)
 auto_detect_lang_config = AutoDetectSourceLanguageConfig(languages=["ar-EG", "en-US"])
 # ✅ Corrected Speech Recognizer Initialization
 speech_recognizer = SpeechRecognizer(speech_config=speech_config,auto_detect_source_language_config=auto_detect_lang_config,audio_config=audio_config)
-
 
 #----------------------------------------------------------------------------------------
 # ✅ Process Speech Input
