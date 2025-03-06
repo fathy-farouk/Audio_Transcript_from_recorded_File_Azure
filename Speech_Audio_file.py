@@ -16,13 +16,13 @@ speech_config = speech_sdk.SpeechConfig(subscription=ai_key, region=ai_region)
 print('✅ Ready to use speech service in:', speech_config.region)
 
 #-----------------------------------------------------------------------------------------------
-# ✅ Convert M4A to WAV using `ffmpeg`
+# ✅ Convert M4A to WAV using `ffmpeg` for better transcript accuracy:
 import ffmpeg
 input_file = "recording_EN.m4a"
 output_file = "recording_EN.wav"
 
 try:
-    ffmpeg.input(input_file).output(output_file).run(overwrite_output=True)
+    ffmpeg.input(input_file).output(output_file, acodec="pcm_s16le", ar="16000", ac="1").run(overwrite_output=True)  # pcm_s16le → 16-bit PCM /ar=16000 → 16 kHz /ac=1 → Mono
     print(f"✅ Conversion complete! Saved as {output_file}")
 except Exception as e:
     print(f"❌ Error converting file: {e}")
